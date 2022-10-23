@@ -1,6 +1,3 @@
-import { useEffect } from 'react'
-
-import { currencies } from '../mock'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -8,34 +5,13 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
+import { TCurrency } from '../utils'
 
-const mockData: Array<{
-    name: string
-    value: string
-}> = []
+interface ICurrencyTableProps {
+    currencyData: Array<TCurrency>
+}
 
-Object.keys(currencies).forEach((key) => {
-    mockData.push({
-        name: `1 ${key}`,
-        // @ts-ignore
-        value: (1 / currencies[key]).toFixed(2) + ' USD',
-    })
-})
-
-export default function CurrencyTable() {
-    // useEffect(() => {
-    //     fetch('https://api.apilayer.com/exchangerates_data/latest?base=USD', {
-    //         method: 'GET',
-    //         redirect: 'follow',
-    //         headers: {
-    //             apikey: 'LgoNVoq1B4LIa6qpBB7BbvvyYoe6Y6Cz',
-    //         },
-    //     })
-    //         .then((response) => response.text())
-    //         .then((result) => console.log(result))
-    //         .catch((error) => console.log('error', error))
-    // }, [])
-
+export default function CurrencyTable({ currencyData }: ICurrencyTableProps) {
     return (
         <TableContainer
             component={Paper}
@@ -54,7 +30,7 @@ export default function CurrencyTable() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {mockData.map((row) => (
+                    {currencyData.map((row) => (
                         <TableRow
                             key={row.name}
                             sx={{
