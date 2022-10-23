@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { AppBar, Toolbar, Typography, Box, Button } from '@mui/material'
 import { CurrencyExchange } from '@mui/icons-material'
 import CurrencySelector from './CurrencySelector'
@@ -43,7 +43,7 @@ const Header = () => {
                     </Typography>
                 </div>
 
-                <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                <Box sx={{ flexGrow: 1, display: 'flex' }}>
                     <nav>
                         <ul
                             style={{
