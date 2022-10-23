@@ -15,7 +15,12 @@ export const currencyApi = createApi({
         getCurrencyByName: builder.query<TCurrency, string>({
             query: (name) => `/latest?base=${name}`,
         }),
+        getCurrentCurrency: builder.mutation({
+            query: ({ from, to, amount }) =>
+                `/convert?to=${to}&from=${from}&amount=${amount}`,
+        }),
     }),
 })
 
-export const { useGetCurrencyByNameQuery } = currencyApi
+export const { useGetCurrencyByNameQuery, useGetCurrentCurrencyMutation } =
+    currencyApi
